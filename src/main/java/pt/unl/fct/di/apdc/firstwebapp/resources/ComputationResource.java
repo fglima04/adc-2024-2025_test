@@ -36,13 +36,9 @@ public class ComputationResource {
 	@GET
 	@Path("/hello")
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response hello() throws IOException{
-		try {
-			throw new IOException("UPS");
-		} catch (Exception e) {
-			LOG.log(Level.SEVERE, "Exception on Method /hello", e);
-			return Response.temporaryRedirect(URI.create("/error/500.html")).build();
-		}
+	public Response hello() {
+		LOG.fine("Saying Hello!");
+		return Response.ok().entity("Hello human, hope you are having a fine day!").build();
 	}
 	
 	@GET
