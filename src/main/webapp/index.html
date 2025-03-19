@@ -1,29 +1,99 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>ADC: My First Web App</title>
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADC: My First Web App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
 
-  <body>
-    <h1>Welcome to this very simple web application!</h1>
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 20px;
+      font-size: 1.5em;
+    }
 
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Services:</td>
-      </tr>
-      <tr>
-        <td><a href='https://www.di.fct.unl.pt'>DI-FCT-UNL</a></td><td>(greetings)</td>
-      </tr>
-      <tr>
-        <td><a href='/rest/utils/hello'>Say Hello!</a></td><td>(greetings)</td>
-      </tr>
-      <tr>
-        <td><a href='/rest/utils/time'>What time is it?</a></td><td>(see server time)</td>
-      </tr>
-    </table>
-  </body>
-  <footer>
-  	Copyright: ADC-PEI, FCT NOVA 2025
-  </footer>
+    main {
+      padding: 20px;
+    }
+
+    table {
+      width: 60%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #0073e6;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    td a {
+      text-decoration: none;
+      color: #0073e6;
+      font-weight: bold;
+    }
+
+    td a:hover {
+      color: #005bb5;
+    }
+
+    footer {
+      margin-top: 20px;
+      background-color: #222;
+      color: white;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<header>Welcome to My Simple Web Application</header>
+
+<main>
+  <h2>Available Services</h2>
+  <table>
+    <tr>
+      <th>Service</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><a href="https://www.di.fct.unl.pt" target="_blank">DI-FCT-UNL</a></td>
+      <td>Greetings</td>
+    </tr>
+    <tr>
+      <td><a href="/rest/utils/hello">Say Hello!</a></td>
+      <td>Greetings</td>
+    </tr>
+    <tr>
+      <td><a href="/rest/utils/time">What time is it?</a></td>
+      <td>See server time</td>
+    </tr>
+  </table>
+</main>
+
+<footer>
+  &copy; 2025 ADC-PEI, FCT NOVA
+</footer>
+
+</body>
 </html>
