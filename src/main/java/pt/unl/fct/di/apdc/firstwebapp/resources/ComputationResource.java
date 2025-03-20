@@ -48,24 +48,20 @@ public class ComputationResource {
 		LOG.fine("Replying to date request.");
 		return Response.ok().entity(g.toJson(fmt.format(new Date()))).build();
 	}
-	
+
 	@GET
 	@Path("/compute")
-	public Response triggerExecuteComputeTask() throws IOException {
-		String projectId = "quantum-shard-415522";
-		String queueName = "Default";
-		String location = "europe-west6";
-		LOG.log(Level.INFO, projectId + " :: " + queueName + " :: " + location );
-
-		try (CloudTasksClient client = CloudTasksClient.create()) {
-			String queuePath = QueueName.of(projectId, location, queueName).toString();
-			Task.Builder taskBuilder = Task.newBuilder().setAppEngineHttpRequest(AppEngineHttpRequest.newBuilder()
-							.setRelativeUri("/rest/utils/compute").setHttpMethod(HttpMethod.POST).build());
-
-			taskBuilder.setScheduleTime(Timestamp.newBuilder().setSeconds(Instant.now(Clock.systemUTC()).getEpochSecond()));
-			
-			client.createTask(queuePath, taskBuilder.build());
-		} 
+	public Response executeComputeTask() {
+		LOG.fine("Starting to execute computation taks");
+		try {
+			Thread.sleep(60*1000*10); //10 min...
+		} catch (Exception e) {
+			LOG.logp(Level.SEVERE, this.getClass().getCanonicalName(),
+					"executeComputeTask"
+					, "An exception has ocurred"
+					, e);
+			return Response.serverError().build();
+		} //Simulates 60s execution
 		return Response.ok().build();
 	}
 }

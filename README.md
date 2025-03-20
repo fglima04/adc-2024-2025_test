@@ -7,4 +7,4 @@
  --- mvn package appengine:deploy -Dapp.deploy.projectId=valued-decker-453016-h5 -Dapp.deploy.version=
  
 # CMD para dar run local ai do mambo :
- --- mvn package appengine:run    OU   --- mvn clean package appengine:run (para reinstalar o google cloud antigo)
+ --- mvn package appengine:run    OU   --- mvn clean compile package appengine:run (para reinstalar o google cloud antigo)
