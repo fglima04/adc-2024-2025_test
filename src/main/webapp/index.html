@@ -3,68 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADC: My First Web App</title>
+  <meta name="description" content="ADC Professional Web Application - Department of Informatics Services">
+  <meta name="keywords" content="ADC, Web Application, Informatics, FCT NOVA, Services"> <!-- Added keywords for SEO -->
+  <meta name="author" content="ADC Team"> <!-- Added author -->
+  <title>ADC: Professional Web App</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Added favicon (replace favicon.ico) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Load fonts from Google Fonts -->
+
   <style>
+    :root {
+      --primary-color: #004d40;
+      --secondary-color: #00796b;
+      --light-bg: #f8f9fa;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --font-family: 'Roboto', sans-serif; /* Use the loaded font */
+    }
+
+    /* Consider using a CSS reset or normalize */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 20px;
-      background-color: #f4f4f4;
-    }
-    h1 {
+      font-family: var(--font-family);
+      line-height: 1.6;
+      background-color: var(--light-bg);
       color: #333;
+      min-height: 100vh; /* Ensure footer sticks to the bottom */
+      display: flex;
+      flex-direction: column;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    th, td {
-      padding: 10px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-    th {
-      background-color: #007bff;
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-    }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      margin-top: 20px;
+      padding: 2rem;
       text-align: center;
-      font-size: 0.9em;
-      color: #666;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow); /* Added shadow for better visibility */
+    }
+
+    header h1 {
+      font-size: 2.5rem; /* Increased font size */
+      margin-bottom: 0.5rem;
+      font-weight: 500; /* Slightly lighter font weight */
+    }
+
+    header p {
+      font-size: 1.1rem; /* Added paragraph styling */
+      font-style: italic; /* Added Italic Style */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      animation: fadeIn 0.5s ease-in;
+      flex-grow: 1; /* Allow container to grow and push the footer down */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 3rem; /* Increased font size */
+      font-weight: 700; /* Stronger font weight */
+    }
+
+    .services-table {
+      width: 100%;
+      border-collapse: collapse; /* Changed to collapse for cleaner look */
+      border-spacing: 0;
+      margin: 1rem 0;
+      overflow: hidden; /* Hide any overflowing content, especially on rounded corners */
+      border-radius: 8px; /* Added rounded corners to the table */
+      box-shadow: var(--shadow); /* Added shadow to the table */
+    }
+
+    .services-table thead {
+      background: var(--primary-color);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .services-table th,
+    .services-table td {
+      padding: 1.25rem; /* Increased padding */
+      text-align: left;
+      border-bottom: 1px solid #ddd; /* Lighter border */
+      transition: var(--transition);
+    }
+
+    .services-table th {
+      font-weight: 500; /* Slightly lighter font weight */
+    }
+
+    .services-table tbody tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .services-table a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .services-table a:hover {
+      color: var(--primary-color);
+      transform: translateX(3px); /* Reduced translation */
+    }
+
+    .services-table i {
+      font-size: 1.2rem; /* Adjusted icon size */
+    }
+
+    footer {
+      background: var(--primary-color);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: auto; /* Push footer to bottom */
+      border-top: 4px solid var(--secondary-color);
+      box-shadow: var(--shadow); /* Added shadow for better visibility */
+    }
+
+    footer p {
+      margin-bottom: 0.5rem; /* Added spacing between paragraphs */
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+
+      header {
+        padding: 1.5rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      main h1 {
+        font-size: 2.2rem;
+      }
+
+      .services-table th,
+      .services-table td {
+        padding: 0.75rem;
+      }
     }
   </style>
 </head>
 <body>
-<h1>Welcome to this very simple web application!</h1>
-<table>
-  <tr>
-    <th colspan="2">Available Services</th>
-  </tr>
-  <tr>
-    <td><a href="https://www.di.fct.unl.pt">DI-FCT-UNL</a></td>
-    <td>(greetings)</td>
-  </tr>
-  <tr>
-    <td><a href="/rest/utils/hello">Say Hello!</a></td>
-    <td>(greetings)</td>
-  </tr>
-  <tr>
-    <td><a href="/rest/utils/time">What time is it?</a></td>
-    <td>(see server time)</td>
-  </tr>
-</table>
+<header>
+  <h1>ADC: Professional Web App</h1>
+  <p>Empowering Innovation in Informatics</p>
+</header>
+
+<main class="container">
+  <h1>Welcome to Our Web Application</h1>
+  <table class="services-table">
+    <thead>
+    <tr>
+      <th scope="col">Service</th>
+      <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <a href="https://www.di.fct.unl.pt" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-university"></i> DI-FCT-UNL
+        </a>
+      </td>
+      <td>Department of Informatics</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/rest/utils/hello">
+          <i class="fas fa-handshake"></i> Say Hello!
+        </a>
+      </td>
+      <td>Send a friendly greeting</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/rest/utils/time">
+          <i class="fas fa-clock"></i> What time is it?
+        </a>
+      </td>
+      <td>Check the server time</td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+
 <footer>
-  &copy; 2025 ADC-PEI, FCT NOVA
+  <p>© 2025 ADC-PEI, FCT NOVA. All Rights Reserved.</p>
+  <p>Built with <i class="fas fa-heart"></i> by the ADC Team</p>
 </footer>
 </body>
 </html>
